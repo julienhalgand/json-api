@@ -1,0 +1,17 @@
+{
+  "name": "json-api",
+  "version": "0.0.1",
+  "description": "Simple CRUD json api write with node.js and express",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theDoubleHeadedPhoenix/json-api.git"
+  },
+  "license": "Apache-2.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.4",
+    "body-parser": "^1.17.2",
+    "sequelize": "^4.8.0",
+    "mysql2": "^1.4.2"
+  }
+}
