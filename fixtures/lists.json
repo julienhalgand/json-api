@@ -1,0 +1,23 @@
+[{
+  "model": "list",
+  "data": {
+    "id": "1",
+    "title": "Test1",
+    "archived": "0",
+    "isPublic": true,
+    "createdAt": "2017-10-15 09:26:38",
+    "updatedAt": "2017-10-15 09:26:38",
+    "UserId": 1
+  }
+}, {
+  "model": "list",
+  "data": {
+    "id": "2",
+    "title": "Test2",
+    "archived": "0",
+    "isPublic": true,
+    "createdAt": "2017-10-15 09:26:38",
+    "updatedAt": "2017-10-15 09:26:38",
+    "UserId": 2
+  }
+}]
