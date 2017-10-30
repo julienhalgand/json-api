@@ -7,11 +7,18 @@
     "url": "https://github.com/theDoubleHeadedPhoenix/json-api.git"
   },
   "license": "Apache-2.0",
-  "main": "server.js",
+  "main": "main.js",
   "dependencies": {
-    "express": "^4.15.4",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^8.1.0",
+    "mysql2": "^1.4.2",
+    "nodemailer": "^4.1.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
+    "recaptcha2": "^1.3.2",
     "sequelize": "^4.8.0",
-    "mysql2": "^1.4.2"
+    "uuid": "^3.1.0"
   }
 }
