@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [1, 150]
       }
     },
+    position: {
+      type: DataTypes.INTEGER
+    },
     completed: DataTypes.BOOLEAN
   })
 

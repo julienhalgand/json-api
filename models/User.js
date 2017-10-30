@@ -77,8 +77,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.hasMany(models.list, { as: 'Lists' })
-      //User.hasMany(models.list, { as: 'SharedLists' })
     User.hasMany(models.sharing_link, { as: 'SharingLinks' })
+    User.belongsToMany(models.list, { as: 'Collaborations', through: 'user_lists', foreignKey: 'userId' })
   }
 
   User.beforeCreate(function(user, options, callback) {

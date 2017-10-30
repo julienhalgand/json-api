@@ -2,71 +2,22 @@
 
 const models = require('../models'),
   express = require('express'),
+  uuidv4 = require('uuid/v4'),
   policies = require('../services/policies'),
   router = express.Router(),
   SharingLink = models.sharing_link
 
-router.route('/sharing')
-
-.post(policies.isLoggedIn(), (req, res, next) => {
-    policies.isListOwner(req, res).then((list) => {
-      if (list) {
-        SharingLink.sync().then(() => {
-          return SharingLink.create({
-            description: req.body.description,
-            completed: false,
-            archived: false,
-            listId: req.body.listId
-          }).then(sharingLink => {
-            res.json(sharingLink.dataValues)
-          })
-        })
-      }
-    })
-  })
-  /*
-  .get(function(req, res) {
-    SharingLink.findAll().then(sharingLinks => {
-      res.json(sharingLinks)
-    })
-  })
-  */
-  /**
-   * SharingLink update delete
-   */
-router.route('/sharing/:id')
+router.route('/sharinglink/renew/:id')
 
 // update the list with this id
-.put(policies.isLoggedIn(), (req, res, next) => {
-  policies.isTaskOwner(req, res).then((list) => {
-    if (list) {
-      var updatedTask = {
-        description: req.body.description,
-        completed: req.body.completed
-      }
-      SharingLink.update(updatedTask, {
-        where: {
-          id: req.params.id
-        }
-      }).then(sharingLink => {
+.patch(policies.isLoggedIn(), (req, res, next) => {
+  policies.isSharingLinkOwner(req, res).then((sharingLink) => {
+    if (sharingLink) {
+      console.log('uinrsteuian')
+      sharingLink.update({ url: uuidv4() }).then(sharingLink => {
         res.json(sharingLink)
       })
-    }
-  })
-})
-
-// delete the list with this id
-.delete(policies.isLoggedIn(), (req, res, next) => {
-  policies.isTaskOwner(req, res).then((list) => {
-    if (list) {
-      SharingLink.destroy({
-        where: {
-          id: req.params.id
-        }
-      }).then(() => {
-        res.json('SharingLink deleted')
-      })
-    }
+    } else res.status(404)
   })
 })
 

@@ -11,7 +11,7 @@ module.exports = () => {
       where: {
         id: payload.id
       },
-      attributes: ['id', 'roles']
+      attributes: ['id', 'role']
     }).then((user) => {
       if (user) {
         return done(null, user)

@@ -5,6 +5,7 @@ const express = require('express'),
   UsersController = require("./controllers/UsersController"),
   ListsController = require("./controllers/ListsController"),
   TasksController = require("./controllers/TasksController"),
+  SharingLinksController = require("./controllers/SharingLinksController"),
   bodyParser = require('body-parser'),
   auth = require("./services/auth.js")(),
   port = process.env.port || config.port
@@ -22,13 +23,13 @@ app.use(auth.initialize())
 
 /****ROUTES****/
 var router = express.Router() // get an instance of the express Router
-app.use('/api', router, UsersController, ListsController, TasksController)
+app.use('/api', router, UsersController, ListsController, TasksController, SharingLinksController)
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
     // do logging
     res.header('Access-Control-Allow-Origin', '*') // TODO - Make this more secure!!
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
     console.log('*****************************************************')
     next()

@@ -3,42 +3,37 @@
 const models = require('../models'),
   express = require('express'),
   policies = require('../services/policies'),
+  taskService = require('../services/TaskService'),
   router = express.Router(),
   Task = models.task
 
 router.route('/tasks')
 
 .post(policies.isLoggedIn(), (req, res, next) => {
-    policies.isListOwner(req, res).then((list) => {
-      if (list) {
-        Task.sync().then(() => {
-          return Task.create({
-            description: req.body.description,
-            completed: false,
-            archived: false,
-            listId: req.body.listId
-          }).then(task => {
-            res.json(task.dataValues)
-          })
+  policies.isCollaborator(req, res).then((list) => {
+    if (list) {
+      Task.sync().then(() => {
+        return Task.create({
+          description: req.body.description,
+          position: req.body.position,
+          completed: false,
+          archived: false,
+          listId: req.body.listId
+        }).then(task => {
+          res.json(task.dataValues)
         })
-      }
-    })
+      })
+    }
   })
-  /*
-  .get(function(req, res) {
-    Task.findAll().then(tasks => {
-      res.json(tasks)
-    })
-  })
-  */
-  /**
-   * Task update delete
-   */
+})
+
+/**
+ * Task update
+ */
 router.route('/tasks/:id')
 
-// update the list with this id
 .put(policies.isLoggedIn(), (req, res, next) => {
-  policies.isTaskOwner(req, res).then((list) => {
+  policies.isCollaboratorByTask(req, res).then((list) => {
     if (list) {
       var updatedTask = {
         description: req.body.description,
@@ -55,9 +50,12 @@ router.route('/tasks/:id')
   })
 })
 
-// delete the list with this id
+/**
+ * Task delete
+ */
 .delete(policies.isLoggedIn(), (req, res, next) => {
-  policies.isTaskOwner(req, res).then((list) => {
+  policies.isCollaboratorByTask(req, res).then((list) => {
+    console.log('iuaetn')
     if (list) {
       Task.destroy({
         where: {
@@ -66,6 +64,14 @@ router.route('/tasks/:id')
       }).then(() => {
         res.json('Task deleted')
       })
+      var task = taskService.findTaskInList(list, req.params.id)
+      for (var i = task.position;  i < list.Tasks.length; i++) {
+        Task.update({ position: i }, {
+          where: {
+            position: i + 1
+          }
+        })
+      }
     }
   })
 })

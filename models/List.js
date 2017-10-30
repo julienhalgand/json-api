@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   List.associate = (models) => {
     List.hasMany(models.task, { as: 'Tasks' })
     List.hasMany(models.sharing_link, { as: 'SharingLinks' })
+    List.belongsToMany(models.user, { as: 'Users', through: 'user_lists', foreignKey: 'listId' })
   }
 
   return List

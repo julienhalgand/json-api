@@ -9,7 +9,7 @@
     "blocked": "0",
     "encryptedPassword": "$2a$08$r4DPjszweyPtBF5jDv61kOkYLUTH54pTMceAiHQvi3ibQVdZcH2.G",
     "emailConfirmationToken": "80d22d5d-8d25-4d7f-8cb2-9ee198862a0c",
-    "roles": "user",
+    "role": "user",
     "createdAt": "2017-10-14 14:34:24",
     "updatedAt": "2017-10-14 14:34:34"
   }
@@ -24,7 +24,7 @@
     "blocked": "0",
     "encryptedPassword": "$2a$08$r4DPjszweyPtBF5jDv61kOkYLUTH54pTMceAiHQvi3ibQVdZcH2.G",
     "emailConfirmationToken": "80d22d5d-8d25-4d7f-8cb2-9ee198862a0c",
-    "roles": "user",
+    "role": "user",
     "createdAt": "2017-10-14 14:34:24",
     "updatedAt": "2017-10-14 14:34:34"
   }

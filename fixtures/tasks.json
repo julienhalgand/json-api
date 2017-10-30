@@ -6,7 +6,8 @@
     "completed": "0",
     "createdAt": "2017-10-15 09:26:43",
     "updatedAt": "2017-10-15 09:26:43",
-    "ListId": "1"
+    "listId": "1",
+    "position": 1
   }
 }, {
   "model": "task",
@@ -16,26 +17,29 @@
     "completed": "1",
     "createdAt": "2017-10-15 09:26:43",
     "updatedAt": "2017-10-15 09:26:43",
-    "ListId": "1"
+    "listId": "1",
+    "position": 2
   }
 }, {
   "model": "task",
   "data": {
-    "id": "3",
-    "description": "Tâche 1",
+    "id": "5",
+    "description": "Tâche 3",
     "completed": "0",
     "createdAt": "2017-10-15 09:26:43",
     "updatedAt": "2017-10-15 09:26:43",
-    "ListId": 2
+    "listId": "1",
+    "position": 3
   }
 }, {
   "model": "task",
   "data": {
-    "id": "4",
-    "description": "Tâche 2",
+    "id": "6",
+    "description": "Tâche 4",
     "completed": "1",
     "createdAt": "2017-10-15 09:26:43",
     "updatedAt": "2017-10-15 09:26:43",
-    "ListId": 2
+    "listId": "1",
+    "position": 4
   }
 }]

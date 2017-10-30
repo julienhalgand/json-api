@@ -32,7 +32,7 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize
-  //*
+  /*
 sequelize.sync({ force: true }).then(() => {
     sequelize_fixtures.loadFile(__dirname + '/../fixtures/users.json', db).then(() => {
       sequelize_fixtures.loadFile(__dirname + '/../fixtures/lists.json', db).then(() => {

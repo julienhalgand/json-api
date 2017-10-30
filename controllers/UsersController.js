@@ -102,8 +102,8 @@ router.route('/users/login')
               res.json({ jwt: token })
             } else res.json({ errors: ['Account blocked'] })
           } else res.json({ errors: ['Verified your email first'] })
-        } else res.sendStatus(401)
-      } else res.sendStatus(401)
+        } else res.sendStatus(400)
+      } else res.sendStatus(400)
     }).catch((errors) => {
       res.sendStatus(401)
     })
@@ -121,8 +121,8 @@ router.route('/users/profile')
       model: models.list,
       as: 'Lists'
     }, {
-      model: models.sharing_link,
-      as: 'SharingLinks'
+      model: models.list,
+      as: 'Collaborations'
     }],
     attributes: ['id', 'firstname', 'lastname', 'email', 'createdAt', 'updatedAt']
   }).then((user) => {
