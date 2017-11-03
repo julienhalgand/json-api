@@ -15,10 +15,10 @@ module.exports = {
     })
   },
   sendSignupEmail: (user) => {
-    let message = {
+    var message = {
       from: options.auth.user,
       to: user.email,
-      subject: 'Bienvenue sur Task',
+      subject: 'Bienvenue sur Do It',
       text: "Félications, plus qu'une étape pour confirmer votre adresse email, veuillez copier coller ce lien " + host.baseUrl + "/users/confirmation/" + user.emailConfirmationToken + "dans votre navigateur",
       html: "<p>Félications, plus qu'une étape pour confirmer votre adresse email, veuillez cliquer <a href=\"" + host.baseUrl + "/users/confirmation/" + user.emailConfirmationToken + "\">ici</a></p><p>Si cette email ne vous êtiez pas destiné, merci de l'ignorer.</p>"
     }

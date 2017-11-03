@@ -40,7 +40,7 @@ router.route('/users')
               models.user.sync().then(() => {
                 return models.user.create(userObj).then(user => {
                   mailer.sendSignupEmail(user).then(() => {
-                    res.json({ message: 'User created' })
+                    res.sendStatus(201)
                   }).catch(function(errors) {
                     res.json({ errors: errors })
                   })
@@ -100,8 +100,8 @@ router.route('/users/login')
               var payload = { id: user.id }
               var token = jwt.sign(payload, jwtConfig.secret, { expiresIn:   '30d' })
               res.json({ jwt: token })
-            } else res.json({ errors: ['Account blocked'] })
-          } else res.json({ errors: ['Verified your email first'] })
+            } else res.json({ errors: ['Compte bloqué !'] })
+          } else res.json({ errors: ['Vérifiez votre email avant de vous connectez !'] })
         } else res.sendStatus(400)
       } else res.sendStatus(400)
     }).catch((errors) => {
