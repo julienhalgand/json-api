@@ -1,9 +1,0 @@
-{
-  "host": "smtp.gmail.com",
-  "port": 587,
-  "secure": false,
-  "auth": {
-    "user": "tracker688@gmail.com",
-    "pass": "W9h5NK6qmPQ9"
-  }
-}
